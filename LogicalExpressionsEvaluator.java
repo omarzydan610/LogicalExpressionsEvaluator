@@ -149,20 +149,15 @@ class EvaluateExp implements LogicalExpressionSolver {
                 boolean operand = stack.pop();
                 stack.push(!operand);
             } else {
-                if (c == '~') {
-                    boolean operand = stack.pop();
-                    stack.push(!operand);
-                } else {
-                    boolean operand2 = stack.pop();
-                    boolean operand1 = stack.pop();
-                    switch (c) {
-                        case '^':
-                            stack.push(operand1 && operand2);
-                            break;
-                        case 'v':
-                            stack.push(operand1 || operand2);
-                            break;
-                    }
+                boolean operand2 = stack.pop();
+                boolean operand1 = stack.pop();
+                switch (c) {
+                    case '^':
+                        stack.push(operand1 && operand2);
+                        break;
+                    case 'v':
+                        stack.push(operand1 || operand2);
+                        break;
                 }
             }
         }
